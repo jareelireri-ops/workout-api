@@ -3,7 +3,6 @@ from app.models.workout import Workout
 from app.models.exercise import Exercise
 from app.models.workout_exercise import WorkoutExercise
 
-# This script is meant to be run once to populate the database with initial data.
 app = create_app()
 
 with app.app_context():
@@ -22,7 +21,7 @@ with app.app_context():
     w1 = Workout(title="Morning Blast", date="2026-04-15")
     w2 = Workout(title="Leg Day", date="2026-04-16")
     db.session.add_all([w1, w2])
-    db.session.commit() # Commit to get IDs for relationships
+    db.session.commit() # Commit here so we have IDs for the next step
 
     print("Linking exercises to workouts...")
     # Add Pushups to Morning Blast
@@ -33,4 +32,4 @@ with app.app_context():
     db.session.add_all([we1, we2])
     db.session.commit()
 
-    print("Database seeded successfully!")
+    print("Database seeded successfully! You're ready for the 100.")
